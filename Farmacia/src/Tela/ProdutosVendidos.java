@@ -34,6 +34,7 @@ public class ProdutosVendidos extends JFrame {
 				try {
 					ProdutosVendidos frame = new ProdutosVendidos();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -91,6 +92,8 @@ public class ProdutosVendidos extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});

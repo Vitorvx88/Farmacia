@@ -4,20 +4,20 @@ public class Medicamento {
     private  int id;	
 	private  String nome;
 	private int quantidade;
-	private double preço;
+	private double preco;
 	private int QuantRemove;
 	private String Promo="";
 
 	//Marcelo
 	private boolean promoAtiva = false;
-	private double valorInterior;
+	private double valorAnterior;
 	private float desc;
 	
-	public double getValorInterior() {
-		return valorInterior;
+	public double getValorAnterior() {
+		return valorAnterior;
 	}
-	public void setValorInterior(double valorInterior) {
-		this.valorInterior = valorInterior;
+	public void setValorAnterior(double valorInterior) {
+		this.valorAnterior = valorInterior;
 	}
 	public boolean isPromoAtiva() {
 		return promoAtiva;
@@ -56,25 +56,24 @@ public class Medicamento {
 		this.quantidade += quantidade;
 	}
 	public double getPreço() {
-		return preço;
+		return preco;
 	}
-	public void setPreço(double preço) {
-		this.preço = preço;
+	public void setPreço(double preco) {
+		this.preco = preco;
 	}
-	public Medicamento(int id, String nome1, int quantidade, double preço,String Promo) {
+	public Medicamento(int id, String nome1, int quantidade, double preco,String Promo) {
 		this.id = id;
 		this.nome = nome1;
 		this.quantidade = quantidade;
-		this.preço = preço;
+		this.preco = preco;
 		this.Promo=Promo;
+		this.valorAnterior=preco;
 	}
 	public Medicamento() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
-	
-
 	public String getPromo() {
 		return Promo;
 	}

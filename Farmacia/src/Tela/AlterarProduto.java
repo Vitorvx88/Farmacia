@@ -11,6 +11,7 @@ import Main.Medicamento;
 import Repositorio.RepositorioCarrinho;
 import Repositorio.RepositorioMedicamento;
 import Repositorio.RepositorioPromocao;
+import Repositorio.RepositorioUsuario;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -44,6 +45,7 @@ public class AlterarProduto extends JFrame {
 				try {
 					AlterarProduto frame = new AlterarProduto();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -97,6 +99,8 @@ public class AlterarProduto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Alterar obj = new Alterar();
 				obj.setVisible(true);
+				obj.setResizable(false);
+				obj.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -112,6 +116,7 @@ public class AlterarProduto extends JFrame {
 		
 				int aux=0;
 				String produto = textProduto.getText();
+				produto.toUpperCase();
 				String verificarNull="";
 				
 				
@@ -119,28 +124,37 @@ public class AlterarProduto extends JFrame {
 					aux=1;
 				}
 				
+				if(RepositorioUsuario.soConterLetras(produto)) {
+					aux=1;	
+				}
+				
 				if(Quant >0 && Preç>0 && aux ==0) {
 					if(RepositorioMedicamento.repMed.get(index).getPromo()!="") {
 						RepositorioMedicamento.repMed.get(index).setNome(textProduto.getText());
 						RepositorioMedicamento.repMed.get(index).setQuantidade(Quant);
 						RepositorioMedicamento.repMed.get(index).setPreço(Preç);
+						RepositorioMedicamento.repMed.get(index).setValorAnterior(Preç);
 						RepositorioPromocao.desconto(index, RepositorioMedicamento.repMed.get(index).getDesc());
 						
 						JOptionPane.showMessageDialog(null,"Produto Alterado com sucesso!");
 						
 						Alterar obj3 = new Alterar();
 						obj3.setVisible(true);	
+						obj3.setResizable(false);
+						obj3.setLocationRelativeTo(null);
 						dispose();
 					}
 					else {
 						RepositorioMedicamento.repMed.get(index).setNome(textProduto.getText());
 						RepositorioMedicamento.repMed.get(index).setQuantidade(Quant);
 						RepositorioMedicamento.repMed.get(index).setPreço(Preç);
-						
+						RepositorioMedicamento.repMed.get(index).setValorAnterior(Preç);
 						JOptionPane.showMessageDialog(null,"Produto Alterado com sucesso!");
 						
 						Alterar obj3 = new Alterar();
 						obj3.setVisible(true);	
+						obj3.setResizable(false);
+						obj3.setLocationRelativeTo(null);
 						dispose();
 					}
 				}
@@ -153,7 +167,7 @@ public class AlterarProduto extends JFrame {
 					}
 					
 					else {
-						JOptionPane.showMessageDialog(null,"O nome do produto não pode ficar em branco!");
+						JOptionPane.showMessageDialog(null,"O nome do produto não pode ficar em branco ou conter números!");
 					}
 				}
 			}

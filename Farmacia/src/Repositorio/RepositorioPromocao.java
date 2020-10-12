@@ -30,8 +30,7 @@ public class RepositorioPromocao {
 	}
 	//Aplica o desconto e salva o preço anterior
 	public static void desconto(int id, float desconto) {
-		double prev = RepositorioMedicamento.repMed.get(id).getPreço();
-		RepositorioMedicamento.repMed.get(id).setValorInterior(RepositorioMedicamento.repMed.get(id).getPreço());
+		double prev = RepositorioMedicamento.repMed.get(id).getValorAnterior();
 		RepositorioMedicamento.repMed.get(id).setPreço
 		(RepositorioMedicamento.repMed.get(id).getPreço()-(prev *(desconto/100)));
 		RepositorioMedicamento.repMed.get(id).setPromo("  P: "+desconto+"%");
@@ -39,7 +38,7 @@ public class RepositorioPromocao {
 	}
 	//Remove o valor promocional e retorna o valor antigo no atual
 	public static void removerPromocao(int id) {
-		RepositorioMedicamento.repMed.get(id).setPreço(RepositorioMedicamento.repMed.get(id).getValorInterior());
+		RepositorioMedicamento.repMed.get(id).setPreço(RepositorioMedicamento.repMed.get(id).getValorAnterior());
 		RepositorioMedicamento.repMed.get(id).setPromo("");
 	}
 	

@@ -30,6 +30,7 @@ public class ListarUsuariosCadastrados extends JFrame {
 				try {
 					ListarUsuariosCadastrados frame = new ListarUsuariosCadastrados();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -88,6 +89,8 @@ public class ListarUsuariosCadastrados extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setResizable(false);
+				obj.setLocationRelativeTo(null);
 				dispose();
 			}
 		});

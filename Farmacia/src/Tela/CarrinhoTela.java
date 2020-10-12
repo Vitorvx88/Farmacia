@@ -46,7 +46,6 @@ public class CarrinhoTela extends JFrame {
 
 
 	private JPanel contentPane;
-	private JTextField textID;
 	
 	private Carrinho car = new Carrinho();
 	private JTextField textQuant;
@@ -66,6 +65,7 @@ public class CarrinhoTela extends JFrame {
 				try {
 					CarrinhoTela frame = new CarrinhoTela();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -145,6 +145,8 @@ public class CarrinhoTela extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setResizable(false);
+				obj.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -178,7 +180,7 @@ public class CarrinhoTela extends JFrame {
 				String Preccos2 = RepositorioCarrinho.format(total);
 				
 				RepositorioCarrinho.car.removeAll(RepositorioCarrinho.car);//limpando o carrinho!
-				String arq = "D:\\Usuário\\Vitorvx\\Desktop\\NotaFiscal.txt";
+				String arq = "C:\\Users\\Vitor_2\\Desktop\\NotaFiscal.txt";
 				String textoR = ManipuladorArquivo.leitor(arq);
 					if(textoR.isEmpty()) {
 						String Inf =("NOME       : " + Nomes +"|\n"+
@@ -197,6 +199,8 @@ public class CarrinhoTela extends JFrame {
 				JOptionPane.showMessageDialog(null, "Venda Efetuada com Sucesso!");
 				CarrinhoTela obj = new CarrinhoTela();
 				obj.setVisible(true);
+				obj.setResizable(false);
+				obj.setLocationRelativeTo(null);
 				dispose();
 		}
 		});
@@ -208,7 +212,7 @@ public class CarrinhoTela extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					try {
-						int ID = Integer.parseInt(textID.getText());
+						int ID = table.getSelectedRow();
 						int VerifID=0;
 						int Quant = Integer.parseInt(textQuant.getText());
 						if(Quant > RepositorioCarrinho.car.get(ID).getQuantidade()) {
@@ -216,6 +220,8 @@ public class CarrinhoTela extends JFrame {
 							car.setIndexQuantRmove(Quant);
 							RemoverDoCarrinho obj3 = new RemoverDoCarrinho();
 							obj3.setVisible(true);
+							obj3.setResizable(false);
+							obj3.setLocationRelativeTo(null);
 							dispose();	
 						}
 						else{
@@ -242,6 +248,8 @@ public class CarrinhoTela extends JFrame {
 									scrollPane.setViewportView(table);
 									CarrinhoTela obj3 = new CarrinhoTela();
 									obj3.setVisible(true);
+									obj3.setResizable(false);
+									obj3.setLocationRelativeTo(null);
 									dispose();
 								}
 								else {
@@ -255,6 +263,8 @@ public class CarrinhoTela extends JFrame {
 										JOptionPane.showMessageDialog(null, "Quantidade Removida com sucesso!");
 										CarrinhoTela obj3 = new CarrinhoTela();
 										obj3.setVisible(true);
+										obj3.setResizable(false);
+										obj3.setLocationRelativeTo(null);
 										dispose();
 									}
 									
@@ -270,6 +280,8 @@ public class CarrinhoTela extends JFrame {
 									}
 									CarrinhoTela obj3 = new CarrinhoTela();
 									obj3.setVisible(true);
+									obj3.setResizable(false);
+									obj3.setLocationRelativeTo(null);
 									dispose();
 								}
 								
@@ -289,15 +301,6 @@ public class CarrinhoTela extends JFrame {
 		});
 		btnRemover.setBounds(273, 239, 89, 23);
 		contentPane.add(btnRemover);
-		
-		textID = new JTextField();
-		textID.setBounds(297, 211, 38, 20);
-		contentPane.add(textID);
-		textID.setColumns(10);
-		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(275, 214, 48, 14);
-		contentPane.add(lblId);
 		
 		JLabel lblQuant = new JLabel("Quant.");
 		lblQuant.setBounds(345, 214, 48, 14);

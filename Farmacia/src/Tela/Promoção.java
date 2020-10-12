@@ -28,7 +28,6 @@ public class Promoção extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textID;
 	private JTextField textDESC;
 	private JTable table;
 	
@@ -41,6 +40,7 @@ public class Promoção extends JFrame {
 				try {
 					Promoção frame = new Promoção();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -63,19 +63,10 @@ public class Promoção extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textID = new JTextField();
-		textID.setBounds(135, 204, 38, 20);
-		contentPane.add(textID);
-		textID.setColumns(10);
-		
 		textDESC = new JTextField();
 		textDESC.setBounds(252, 204, 33, 20);
 		contentPane.add(textDESC);
 		textDESC.setColumns(10);
-		
-		JLabel lblNome = new JLabel("ID");
-		lblNome.setBounds(135, 181, 51, 20);
-		contentPane.add(lblNome);
 		
 		JLabel lblDesconto = new JLabel("Desconto");
 		lblDesconto.setBounds(252, 184, 67, 14);
@@ -89,7 +80,7 @@ public class Promoção extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-				int ID= Integer.parseInt(textID.getText());
+				int ID= table.getSelectedRow();
 				float Desc = Float.parseFloat(textDESC.getText());
 			
 				if(RepositorioMedicamento.buscar(ID)==true) {
@@ -99,6 +90,8 @@ public class Promoção extends JFrame {
 						JOptionPane.showMessageDialog(null,"Promoção adicionada!" );									
 						Promoção obj = new Promoção();//Atualiza a tela de promoção
 						obj.setVisible(true);
+						obj.setLocationRelativeTo(null);
+						obj.setResizable(false);
 						dispose();
 					}
 					else
@@ -120,6 +113,8 @@ public class Promoção extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -166,12 +161,14 @@ public class Promoção extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int ID= Integer.parseInt(textID.getText());
+					int ID= table.getSelectedRow();
 					if(RepositorioMedicamento.buscar(ID)==true) {			
 						RepositorioPromocao.removerPromocao(ID);
 						JOptionPane.showMessageDialog(null,"Promoção Removida!" );	
 						Promoção obj = new Promoção();//Atualiza a tela de promoção
 						obj.setVisible(true);
+						obj.setLocationRelativeTo(null);
+						obj.setResizable(false);
 						dispose();
 					}
 					else

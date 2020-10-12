@@ -38,6 +38,7 @@ public class Cadastro extends JFrame {
 				try {
 					Cadastro frame = new Cadastro();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -82,6 +83,8 @@ public class Cadastro extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setResizable(false);
+				obj.setLocationRelativeTo(null);
 				dispose();
 				
 			}
@@ -100,6 +103,7 @@ public class Cadastro extends JFrame {
 					int senhaNull=0;
 					int idade = Integer.parseInt(IntIdade.getText());
 					String nome = textNome.getText();
+					nome.toUpperCase();
 					String CPF = textCPF.getText();
 					String senha = textSenha.getText();
 					String auxNull ="";
@@ -130,6 +134,8 @@ public class Cadastro extends JFrame {
 														dispose();
 														Cadastro obj3 = new Cadastro();
 														obj3.setVisible(true);	
+														obj3.setResizable(false);
+														obj3.setLocationRelativeTo(null);
 														dispose();
 													}
 													else {

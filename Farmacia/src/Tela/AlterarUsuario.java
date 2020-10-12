@@ -42,6 +42,7 @@ public class AlterarUsuario extends JFrame {
 				try {
 					AlterarUsuario frame = new AlterarUsuario();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -89,6 +90,7 @@ public class AlterarUsuario extends JFrame {
 					String auxNull ="";
 					String CPF=textCPF.getText();
 					String nome = textNome.getText();
+					nome.toUpperCase();
 				
 				
 					if(CPF.equals(auxNull)) {
@@ -114,6 +116,8 @@ public class AlterarUsuario extends JFrame {
 												
 												Alterar obj3 = new Alterar();
 												obj3.setVisible(true);	
+												obj3.setResizable(false);
+												obj3.setLocationRelativeTo(null);
 												dispose();
 											}
 											else {
@@ -128,6 +132,8 @@ public class AlterarUsuario extends JFrame {
 													JOptionPane.showMessageDialog(null, "Usuario Alterado com Sucesso!");
 													Alterar obj3 = new Alterar();
 													obj3.setVisible(true);	
+													obj3.setResizable(false);
+													obj3.setLocationRelativeTo(null);
 													dispose();
 												}
 												else {
@@ -170,6 +176,8 @@ public class AlterarUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Alterar obj = new Alterar();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});

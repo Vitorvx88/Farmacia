@@ -31,6 +31,8 @@ public class Principal extends JFrame {
 				try {
 					Principal frame = new Principal();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,6 +60,8 @@ public class Principal extends JFrame {
 	
 				Cadastro obj = new Cadastro();
 				obj.setVisible(true);	
+				obj.setResizable(false);
+				obj.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
@@ -69,6 +73,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ListarUsuariosCadastrados obj = new ListarUsuariosCadastrados();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 				
 			}
@@ -81,6 +87,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ListarProdutos obj = new ListarProdutos();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 						
 			}
@@ -94,7 +102,9 @@ public class Principal extends JFrame {
 				//label.setText("qwew");
 				
 				CadastrarProduto obj3 = new CadastrarProduto();
-				obj3.setVisible(true);	
+				obj3.setVisible(true);
+				obj3.setLocationRelativeTo(null);
+				obj3.setResizable(false);
 				dispose();
 			}
 		});
@@ -105,7 +115,9 @@ public class Principal extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Login obj3 = new Login();
-				obj3.setVisible(true);	
+				obj3.setVisible(true);
+				obj3.setLocationRelativeTo(null);
+				obj3.setResizable(false);
 				dispose();
 			}
 		});
@@ -117,6 +129,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Alterar obj = new Alterar();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -128,6 +142,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				CarrinhoTela obj = new CarrinhoTela();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -139,6 +155,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Promoção obj = new Promoção();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -150,6 +168,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ListarPromocao obj = new ListarPromocao();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -161,6 +181,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AdicionarProduto obj = new AdicionarProduto();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -172,6 +194,8 @@ public class Principal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ProdutosVendidos obj = new ProdutosVendidos();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});

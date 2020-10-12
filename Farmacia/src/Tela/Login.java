@@ -38,6 +38,8 @@ public class Login extends JFrame {
 				try {
 					Login frame = new Login();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -55,22 +57,22 @@ public class Login extends JFrame {
 			
 		if(RepositorioUsuario.buscar("12345678912")==false){
 			if(RepositorioUsuario.addUsuario(usu,idade)==true) {
-				usu.setNome("Vitor Felipe da Silva Lourenço");
+				usu.setNome("VITOR FELIPE DA SILVA LOURENCO");
 				usu.setCpf("12345678912");
 				usu.setIdade(21);
 				usu.setSenha("123456789");
 				
-				Medicamento a1 = new Medicamento(0,"Dipirona",6,(float) 4.65,"");
+				Medicamento a1 = new Medicamento(0,"DIPIRONA",6,(float) 4.65,"");
 				rep.addMedicamento(a1);
-				Medicamento a2 = new Medicamento(1,"Suprin",12,(float) 14.95,"");
+				Medicamento a2 = new Medicamento(1,"SUPRIN",12,(float) 14.95,"");
 				rep.addMedicamento(a2);
-				Medicamento a3 = new Medicamento(2,"Platin",21,(float) 19.23,"");
+				Medicamento a3 = new Medicamento(2,"PLATIN",21,(float) 19.23,"");
 				rep.addMedicamento(a3);
-				Medicamento a4 = new Medicamento(3,"Ecos",4,(float) 16.03,"");
+				Medicamento a4 = new Medicamento(3,"ECOS",4,(float) 16.03,"");
 				rep.addMedicamento(a4);
-				Medicamento a5 = new Medicamento(4,"Fraldas M",33,(float) 95.09,"");
+				Medicamento a5 = new Medicamento(4,"FRALDAS M",33,(float) 95.09,"");
 				rep.addMedicamento(a5);
-				Medicamento a6 = new Medicamento(5,"Fraldas G",48,(float) 112.84,"");
+				Medicamento a6 = new Medicamento(5,"FRALDAS G",48,(float) 112.84,"");
 				rep.addMedicamento(a6);
 			}
 		}
@@ -101,13 +103,16 @@ public class Login extends JFrame {
 				if((RepositorioUsuario.buscar(textLogin.getText())==true) && (RepositorioUsuario.buscarSenha(textSenha.getText())==true)) {
 					JOptionPane.showMessageDialog(null, "Bem vindo ao Sistema!");
 					Principal obj = new Principal();
-					obj.setVisible(true);	
+					obj.setVisible(true);
+					obj.setLocationRelativeTo(null);
+					obj.setResizable(false);
 					dispose();
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "Acesso Negado!");
 					Login obj = new Login();
 					obj.setVisible(true);	
+					obj.setLocationRelativeTo(null);
 					dispose();
 				}
 			}
@@ -121,6 +126,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Login obj = new Login();
 				obj.setVisible(false);	
+				obj.setResizable(false);
 				dispose();
 			}
 		});

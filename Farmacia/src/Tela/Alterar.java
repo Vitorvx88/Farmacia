@@ -43,6 +43,8 @@ public class Alterar extends JFrame {
 				try {
 					Alterar frame = new Alterar();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -80,6 +82,8 @@ public class Alterar extends JFrame {
 				usu.setIndex(RepositorioUsuario.buscarAlterar(textCPF.getText())); 
 				AlterarUsuario obj = new AlterarUsuario();
 				obj.setVisible(true);
+				obj.setResizable(false);
+				obj.setLocationRelativeTo(null);
 				dispose();				
 			}
 			else { 
@@ -113,6 +117,8 @@ public class Alterar extends JFrame {
 					JOptionPane.showMessageDialog(null,"Produto encontrado!");
 					AlterarProduto obj = new AlterarProduto();
 					obj.setVisible(true);
+					obj.setLocationRelativeTo(null);
+					obj.setResizable(false);
 					dispose();
 				}
 				else {
@@ -150,6 +156,8 @@ public class Alterar extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});

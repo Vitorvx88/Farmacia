@@ -30,6 +30,7 @@ public class ListarPromocao extends JFrame {
 				try {
 					ListarPromocao frame = new ListarPromocao();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -86,6 +87,8 @@ public class ListarPromocao extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);	
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});

@@ -39,6 +39,7 @@ public class CadastrarProduto extends JFrame {
 				try {
 					CadastrarProduto frame = new CadastrarProduto();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -73,6 +74,8 @@ public class CadastrarProduto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -90,19 +93,22 @@ public class CadastrarProduto extends JFrame {
 					double Preç = Double.parseDouble(textPreç.getText());
 					int auxNull=0;
 					String produto = textProduto.getText();
+					produto.toUpperCase();
 					String verificarNull="";
 				
-					if(verificarNull.equals(produto)) {
+					if(verificarNull.equals(produto.toUpperCase())) {
 						auxNull=1;
 					}
-					boolean busca = RepositorioMedicamento.Verificar(produto);
+					boolean busca = RepositorioMedicamento.Verificar(produto.toUpperCase());
 					if(busca!=true) {
 						if(Quant >0 && Preç>0 && auxNull ==0) {
-							Cadastrar(textProduto.getText(),ID,Quant,Preç);
+							Cadastrar(produto.toUpperCase(),ID,Quant,Preç);
 							JOptionPane.showMessageDialog(null,"Produto Cadastrado com sucesso!");
 						
 							CadastrarProduto obj3 = new CadastrarProduto();
-							obj3.setVisible(true);	
+							obj3.setVisible(true);
+							obj3.setLocationRelativeTo(null);
+							obj3.setResizable(false);
 							dispose();
 						}
 						else {

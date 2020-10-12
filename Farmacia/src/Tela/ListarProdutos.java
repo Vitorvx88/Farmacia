@@ -28,7 +28,6 @@ public class ListarProdutos extends JFrame {
 
 	private JPanel contentPane;
 	private RepositorioMedicamento rep = new RepositorioMedicamento();
-	private JTextField textID;
 	
 	private RepositorioCarrinho recar = new RepositorioCarrinho();
 	private JTextField textQuant;
@@ -42,6 +41,7 @@ public class ListarProdutos extends JFrame {
 				try {
 					ListarProdutos frame = new ListarProdutos();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -100,6 +100,8 @@ public class ListarProdutos extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -111,9 +113,9 @@ public class ListarProdutos extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					try {
-					int ID= Integer.parseInt(textID.getText());
+					int ID= table.getSelectedRow();
 					int Quant= Integer.parseInt(textQuant.getText());
-					int VerifID = RepositorioCarrinho.Verificar(RepositorioMedicamento.repMed.get(ID).getNome());//vai verificar se já o produto no carrinho
+					int VerifID = RepositorioCarrinho.Verificar(RepositorioMedicamento.repMed.get(ID).getNome());//vai verificar se há o produto no carrinho
 					if(RepositorioCarrinho.buscarID(ID)==true) {
 						if(RepositorioMedicamento.repMed.get(ID).getQuantidade()!=0) {//verificar se tem no stoque
 							if(Quant > 0) {//verificando se a quantida que o adm quer é maior que 0
@@ -124,6 +126,8 @@ public class ListarProdutos extends JFrame {
 										JOptionPane.showMessageDialog(null, "Produto adicionado no carrinho");
 										ListarProdutos obj = new ListarProdutos();
 										obj.setVisible(true);
+										obj.setLocationRelativeTo(null);
+										obj.setResizable(false);
 										dispose();
 										
 									}else {
@@ -134,6 +138,8 @@ public class ListarProdutos extends JFrame {
 										RepositorioCarrinho.addNoCarrinho(m1);
 										ListarProdutos obj = new ListarProdutos();
 										obj.setVisible(true);
+										obj.setLocationRelativeTo(null);
+										obj.setResizable(false);
 										dispose();
 									}
 								}
@@ -164,15 +170,6 @@ public class ListarProdutos extends JFrame {
 		});
 		btnAddAoCarrinho.setBounds(287, 227, 137, 23);
 		contentPane.add(btnAddAoCarrinho);
-		
-		JLabel lblId = new JLabel("ID:");
-		lblId.setBounds(139, 230, 24, 18);
-		contentPane.add(lblId);
-		
-		textID = new JTextField();
-		textID.setBounds(160, 229, 40, 21);
-		contentPane.add(textID);
-		textID.setColumns(10);
 		
 		JLabel lblQuant = new JLabel("Quant.");
 		lblQuant.setBounds(204, 231, 46, 14);

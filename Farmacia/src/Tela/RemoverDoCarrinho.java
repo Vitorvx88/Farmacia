@@ -31,6 +31,7 @@ public class RemoverDoCarrinho extends JFrame {
 				try {
 					RemoverDoCarrinho frame = new RemoverDoCarrinho();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -83,6 +84,8 @@ public class RemoverDoCarrinho extends JFrame {
 			
 				CarrinhoTela obj3 = new CarrinhoTela();
 				obj3.setVisible(true);
+				obj3.setLocationRelativeTo(null);
+				obj3.setResizable(false);
 				dispose();
 			}
 		});
@@ -94,6 +97,8 @@ public class RemoverDoCarrinho extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				CarrinhoTela obj3 = new CarrinhoTela();
 				obj3.setVisible(true);
+				obj3.setLocationRelativeTo(null);
+				obj3.setResizable(false);
 				dispose();
 			}
 		});

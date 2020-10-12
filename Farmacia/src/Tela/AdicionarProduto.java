@@ -31,6 +31,8 @@ public class AdicionarProduto extends JFrame {
 				try {
 					AdicionarProduto frame = new AdicionarProduto();
 					frame.setVisible(true);
+					frame.setResizable(false);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -73,6 +75,8 @@ public class AdicionarProduto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Principal obj = new Principal();
 				obj.setVisible(true);
+				obj.setLocationRelativeTo(null);
+				obj.setResizable(false);
 				dispose();
 			}
 		});
@@ -91,6 +95,8 @@ public class AdicionarProduto extends JFrame {
 							RepositorioMedicamento.repMed.get(IndexBus).setQuantidade1(Quant);
 							JOptionPane.showMessageDialog(null, "Adicionado com sucesso!");
 							AdicionarProduto obj = new AdicionarProduto();
+							obj.setLocationRelativeTo(null);
+							obj.setResizable(false);
 							obj.setVisible(true);
 							dispose();
 						}
@@ -114,15 +120,29 @@ public class AdicionarProduto extends JFrame {
 				try {
 					int Quant = Integer.parseInt((textQuant.getText()));
 					String nome = textNome.getText();
-					int IndexBus = RepositorioMedicamento.buscar(nome);
+					int IndexBus = RepositorioMedicamento.buscar(nome.toUpperCase());
 					if(IndexBus!=-1){
 						if(Quant>0) {
 							if(Quant <= RepositorioMedicamento.repMed.get(IndexBus).getQuantidade()) {
 								RepositorioMedicamento.repMed.get(IndexBus).setQuantidade1(-Quant);
-								JOptionPane.showMessageDialog(null, "Quantidade removida com sucesso!");
-								AdicionarProduto obj = new AdicionarProduto();
-								obj.setVisible(true);
-								dispose();
+								
+								if(RepositorioMedicamento.repMed.get(IndexBus).getQuantidade()==0) {
+									RepositorioMedicamento.repMed.remove(IndexBus);
+									JOptionPane.showMessageDialog(null, "Quantidade removida com sucesso!");
+
+									AdicionarProduto obj = new AdicionarProduto();
+									obj.setLocationRelativeTo(null);
+									obj.setVisible(false);
+									obj.setResizable(false);
+									dispose();
+								}
+								else
+									JOptionPane.showMessageDialog(null, "Quantidade removida com sucesso!");
+									AdicionarProduto obj = new AdicionarProduto();
+									obj.setLocationRelativeTo(null);
+									obj.setVisible(true);
+									obj.setResizable(false);
+									dispose();
 							}
 							else
 								JOptionPane.showMessageDialog(null, "O valor é maior que a quantidade em estoque!");	
