@@ -1,8 +1,6 @@
-package Repositorio;
+package repositorio;
 
 import java.util.ArrayList;
-
-import Main.AtualizarLista;
 
 
 public class RepositorioAtualizarLista {

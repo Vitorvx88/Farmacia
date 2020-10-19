@@ -1,7 +1,8 @@
-package Repositorio;
+package repositorio;
 
 import java.util.ArrayList;
-import Main.Usuario;
+
+import dados.Usuario;
 
 
 

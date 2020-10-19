@@ -1,8 +1,8 @@
-package Repositorio;
+package repositorio;
 
 import java.util.ArrayList;
 
-import Main.Compra;
+import dados.Compra;
 
 public class RepositorioCompra {
 	public static  ArrayList <Compra> compr = new ArrayList<>();
