@@ -1,10 +1,9 @@
-package Repositorio;
+package repositorio;
 
 import java.util.ArrayList;
 
-
-import Exceptions.MedicamentoNaoExisteException;
-import Main.Medicamento;
+import dados.Medicamento;
+import exceptions.MedicamentoNaoExisteException;
 
 public class RepositorioMedicamento {
 	

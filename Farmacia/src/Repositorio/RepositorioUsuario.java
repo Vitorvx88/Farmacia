@@ -1,18 +1,15 @@
-package Repositorio;
+package repositorio;
 
 import java.util.ArrayList;
-import Main.Usuario;
+
+import dados.Usuario;
 
 
 
 	public class RepositorioUsuario {
-		public static ArrayList <Usuario> nomes = new ArrayList<>();
-	    Usuario u = new Usuario ();
-	    public void Usuario (Usuario u) {
-	    	
-	    }
-	    
-	    public static boolean addUsuario (Usuario usu, int aux){  
+	public static ArrayList <Usuario> nomes = new ArrayList<>();
+
+	public static boolean addUsuario (Usuario usu, int aux){  
 	    
 	    if(aux>=18) {
 	    	

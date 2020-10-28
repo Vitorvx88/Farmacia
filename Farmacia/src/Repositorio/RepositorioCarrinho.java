@@ -1,11 +1,14 @@
-package Repositorio;
+package repositorio;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
-import Main.Carrinho;
+import dados.Carrinho;
 
 
 public class RepositorioCarrinho {
@@ -29,7 +32,13 @@ public class RepositorioCarrinho {
 		}
 		return achei;
 	}
-
+	
+	public static String hora() {
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+		Date date = new Date();
+		String hora=dateFormat.format(date);
+		return hora;	  
+	}  
 
 	//vitor:Vai me retornar um Boolean 
 	public static boolean buscar(int ID){//

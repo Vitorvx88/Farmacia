@@ -1,7 +1,7 @@
-package Exceptions;
+package exceptions;
 
-import Main.Medicamento;
-import Main.Usuario;
+import dados.Medicamento;
+import dados.Usuario;
 
 public class UsuarioNaoExisteException extends Exception {
 	 private Usuario u;

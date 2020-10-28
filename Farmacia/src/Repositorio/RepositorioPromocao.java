@@ -1,10 +1,10 @@
-package Repositorio;
+package repositorio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import Main.Medicamento;
-import Main.Promocao;
+import dados.Medicamento;
+import dados.Promocao;
 
 public class RepositorioPromocao {
 	public static  ArrayList <Promocao> repPromo = new ArrayList<>();

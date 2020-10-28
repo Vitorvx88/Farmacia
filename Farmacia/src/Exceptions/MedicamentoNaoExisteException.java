@@ -1,6 +1,6 @@
-package Exceptions;
+package exceptions;
 
-import Main.Medicamento;
+import dados.Medicamento;
 
 public class MedicamentoNaoExisteException extends Exception {
 	   private Medicamento m;
