@@ -59,8 +59,13 @@ public class AtualizarLista implements Comparable<AtualizarLista>{
 	}
 
 
+<<<<<<< HEAD:Farmacia/src/Repositorio/AtualizarLista.java
 	public void setPreco(double preco) {
 		this.preco = preco;
+=======
+	public void setPreço(double preço) {
+		this.preco = preço;
+>>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Main/AtualizarLista.java
 	}
 
 

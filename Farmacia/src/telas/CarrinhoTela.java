@@ -19,7 +19,10 @@ import dados.Compra;
 import repositorio.AtualizarLista;
 import repositorio.RepositorioAtualizarLista;
 import repositorio.RepositorioCarrinho;
+<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
 import repositorio.RepositorioClientes;
+=======
+>>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
 import repositorio.RepositorioCompra;
 import repositorio.RepositorioMedicamento;
 
@@ -40,7 +43,11 @@ public class CarrinhoTela extends JFrame {
 	private Carrinho car = new Carrinho();
 	private JTextField textQuant;
 
+<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
 	private double total =0;
+=======
+	private double total = 0;
+>>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
 	private String a ="";
 	private JTable table;
 	private int test=0;
@@ -119,11 +126,17 @@ public class CarrinhoTela extends JFrame {
 		for(int i = 0; i < RepositorioCarrinho.car.size(); i++) {
 			DefaultTableModel model = (DefaultTableModel)table.getModel();
 			model.addRow(new Object [] {(RepositorioCarrinho.car.get(i).getID()),(RepositorioCarrinho.car.get(i).getNome()),
+<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
 			RepositorioCarrinho.car.get(i).getQuantidade(),RepositorioCarrinho.car.get(i).getPreco(),(RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade()-car.getValor()),RepositorioCarrinho.car.get(i).getPromo()});
 			scrollPane.setColumnHeaderView(table);
 			total+=((RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade()));
 			car.setDescont(total);
 			total+=-car.getValor();
+=======
+			RepositorioCarrinho.car.get(i).getQuantidade(),RepositorioCarrinho.car.get(i).getPreco(),(RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade()),RepositorioCarrinho.car.get(i).getPromo()});
+			scrollPane.setColumnHeaderView(table);
+			total+=(RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade());
+>>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
 			}
 		scrollPane.setViewportView(table);
 		
@@ -155,7 +168,11 @@ public class CarrinhoTela extends JFrame {
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(int i = 0; i<RepositorioCarrinho.car.size(); i++) {//Passando a lista carrinho para um lista de compra
+<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
 					Compra m1 = new Compra(RepositorioCompra.compr.size()-1,RepositorioCarrinho.car.get(i).getNome(),RepositorioCarrinho.car.get(i).getQuantidade(),(RepositorioCarrinho.car.get(i).getQuantidade()*RepositorioCarrinho.car.get(i).getPreco()),data,horas,RepositorioCarrinho.car.get(i).getPreco());
+=======
+					Compra m1 = new Compra(RepositorioCompra.compr.size()-1,RepositorioCarrinho.car.get(i).getNome(),RepositorioCarrinho.car.get(i).getQuantidade(),(RepositorioCarrinho.car.get(i).getQuantidade()*RepositorioCarrinho.car.get(i).getPreco()),data,horas);
+>>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
 					RepositorioCompra.addCompra(m1);
 				}//fim copia
 				
