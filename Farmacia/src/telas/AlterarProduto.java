@@ -130,7 +130,7 @@ public class AlterarProduto extends JFrame {
 				
 				if(Quant >0 && Preç>0 && aux ==0) {
 					if(RepositorioMedicamento.repMed.get(index).getPromo()!="") {
-						RepositorioMedicamento.repMed.get(index).setNome(textProduto.getText());
+						RepositorioMedicamento.repMed.get(index).setNome(textProduto.getText().toUpperCase());
 						RepositorioMedicamento.repMed.get(index).setQuantidade(Quant);
 						RepositorioMedicamento.repMed.get(index).setPreço(Preç);
 						RepositorioMedicamento.repMed.get(index).setValorAnterior(Preç);
@@ -145,7 +145,7 @@ public class AlterarProduto extends JFrame {
 						dispose();
 					}
 					else {
-						RepositorioMedicamento.repMed.get(index).setNome(textProduto.getText());
+						RepositorioMedicamento.repMed.get(index).setNome(textProduto.getText().toUpperCase());
 						RepositorioMedicamento.repMed.get(index).setQuantidade(Quant);
 						RepositorioMedicamento.repMed.get(index).setPreço(Preç);
 						RepositorioMedicamento.repMed.get(index).setValorAnterior(Preç);
