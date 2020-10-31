@@ -10,6 +10,7 @@ import dados.Carrinho;
 import dados.Medicamento;
 import dados.Usuario;
 import repositorio.RepositorioCarrinho;
+import repositorio.RepositorioClientes;
 import repositorio.RepositorioMedicamento;
 import repositorio.RepositorioUsuario;
 
@@ -32,6 +33,7 @@ public class Alterar extends JFrame {
 	
 	private Medicamento rep = new Medicamento();
 	private JPasswordField passwordField;
+	private JTextField textCPFCliente;
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +58,7 @@ public class Alterar extends JFrame {
 	public Alterar() {
 		setTitle("MyPharma");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 597, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -94,7 +96,7 @@ public class Alterar extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JLabel lblOu = new JLabel("OU");
-		lblOu.setBounds(195, 163, 48, 14);
+		lblOu.setBounds(179, 163, 48, 14);
 		contentPane.add(lblOu);
 		
 		JButton btnNewButton_1 = new JButton("Produto");
@@ -128,7 +130,7 @@ public class Alterar extends JFrame {
 			}
 		}
 		});
-		btnNewButton_1.setBounds(253, 140, 144, 60);
+		btnNewButton_1.setBounds(208, 140, 144, 60);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblDigiteOCpf = new JLabel("Digite o CPF");
@@ -141,11 +143,11 @@ public class Alterar extends JFrame {
 		textCPF.setColumns(10);
 		
 		JLabel lblDigiteOId = new JLabel("Digite o ID");
-		lblDigiteOId.setBounds(293, 45, 77, 19);
+		lblDigiteOId.setBounds(248, 45, 77, 19);
 		contentPane.add(lblDigiteOId);
 		
 		textID = new JTextField();
-		textID.setBounds(295, 77, 48, 20);
+		textID.setBounds(250, 77, 48, 20);
 		contentPane.add(textID);
 		textID.setColumns(10);
 		
@@ -159,7 +161,7 @@ public class Alterar extends JFrame {
 				dispose();
 			}
 		});
-		btnVoltar.setBounds(159, 227, 89, 23);
+		btnVoltar.setBounds(236, 227, 89, 23);
 		contentPane.add(btnVoltar);
 		
 		JLabel lblDigiteASenha = new JLabel("Digite a senha");
@@ -169,5 +171,50 @@ public class Alterar extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(10, 96, 144, 22);
 		contentPane.add(passwordField);
+		
+		JLabel lblOu_1 = new JLabel("OU");
+		lblOu_1.setBounds(377, 163, 48, 14);
+		contentPane.add(lblOu_1);
+		
+		JButton btnNewButton_2 = new JButton("Cliente");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(RepositorioClientes.buscar(textCPFCliente.getText())==true ) {
+					
+					int index = RepositorioClientes.buscarAlterar(textCPFCliente.getText());
+					
+					RepositorioUsuario.nomes.get(0).setIndex(index); 
+					RepositorioUsuario.nomes.get(index).setN(RepositorioClientes.cliente.get(index).getNome());
+					RepositorioUsuario.nomes.get(index).setC(RepositorioClientes.cliente.get(index).getCpf());
+					RepositorioUsuario.nomes.get(index).setI(RepositorioClientes.cliente.get(index).getIdade());
+				
+					
+					JOptionPane.showMessageDialog(null,"Cliente encontrado!");
+					
+					usu.setIndex(RepositorioClientes.buscarAlterar(textCPFCliente.getText())); 
+					AlterarCliente obj = new AlterarCliente();
+					obj.setVisible(true);
+					obj.setResizable(false);
+					obj.setLocationRelativeTo(null);
+					dispose();				
+				}
+				else { 
+					JOptionPane.showMessageDialog(null,"Esse Cliente não existe. Verifique se os dados do CPF estão corretos!");
+				}
+				
+			}
+		});
+		btnNewButton_2.setBounds(413, 140, 144, 60);
+		contentPane.add(btnNewButton_2);
+		
+		JLabel lblDigiteOCpf_1 = new JLabel("Digite o CPF");
+		lblDigiteOCpf_1.setBounds(452, 62, 126, 24);
+		contentPane.add(lblDigiteOCpf_1);
+		
+		textCPFCliente = new JTextField();
+		textCPFCliente.setColumns(10);
+		textCPFCliente.setBounds(413, 97, 144, 20);
+		contentPane.add(textCPFCliente);
 	}
 }
