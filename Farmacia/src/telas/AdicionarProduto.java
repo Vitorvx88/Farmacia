@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class AdicionarProduto extends JFrame {
 
@@ -22,6 +25,7 @@ public class AdicionarProduto extends JFrame {
 	private JTextField textNome;
 	private JTextField textQuant;
 	private static RepositorioMedicamento r = new RepositorioMedicamento();
+	private JTable table;
 	/**
 	 * Launch the application.
 	 */
@@ -44,31 +48,40 @@ public class AdicionarProduto extends JFrame {
 	 * Create the frame.
 	 */
 	public AdicionarProduto() {
+		
+
 		setTitle("MyPharma");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 473, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		textNome = new JTextField();
-		textNome.setBounds(32, 111, 161, 20);
+		textNome.setBounds(25, 195, 161, 20);
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 		
 		textQuant = new JTextField();
-		textQuant.setBounds(242, 111, 37, 20);
+		textQuant.setBounds(235, 195, 37, 20);
 		contentPane.add(textQuant);
 		textQuant.setColumns(10);
 		
 		JLabel lblNomeDoProduto = new JLabel("Nome do Produto");
-		lblNomeDoProduto.setBounds(32, 80, 102, 20);
+		lblNomeDoProduto.setBounds(25, 164, 102, 20);
 		contentPane.add(lblNomeDoProduto);
 		
 		JLabel lblQuantidade = new JLabel("Quantidade");
-		lblQuantidade.setBounds(233, 80, 74, 20);
+		lblQuantidade.setBounds(226, 164, 74, 20);
 		contentPane.add(lblQuantidade);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 439, 142);
+		contentPane.add(scrollPane);
+		scrollPane.setViewportView(table);
+		
+	
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
@@ -89,7 +102,7 @@ public class AdicionarProduto extends JFrame {
 				try {
 					int Quant = Integer.parseInt((textQuant.getText()));
 					String nome = textNome.getText();
-					int IndexBus = RepositorioMedicamento.buscar(nome);
+					int IndexBus = RepositorioMedicamento.buscar(nome.toUpperCase());
 					if(IndexBus!=-1){
 						if(Quant>0) {
 							RepositorioMedicamento.repMed.get(IndexBus).setQuantidade1(Quant);
@@ -111,7 +124,7 @@ public class AdicionarProduto extends JFrame {
 				}
 			}
 		});
-		btnAdicionar.setBounds(317, 79, 89, 23);
+		btnAdicionar.setBounds(310, 163, 89, 23);
 		contentPane.add(btnAdicionar);
 		
 		JButton btnRemover = new JButton("Remover");
@@ -158,7 +171,33 @@ public class AdicionarProduto extends JFrame {
 				}
 			}
 		});
-		btnRemover.setBounds(317, 128, 89, 23);
+		btnRemover.setBounds(310, 194, 89, 23);
 		contentPane.add(btnRemover);
+		
+
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"ID", "NOME", "QUANTIDADE", "PRE\u00C7O", "PROMO\u00C7\u00C3O"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Integer.class, String.class, Integer.class, Double.class, String.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		table.getColumnModel().getColumn(0).setPreferredWidth(47);
+		table.getColumnModel().getColumn(1).setPreferredWidth(148);
+		table.getColumnModel().getColumn(2).setPreferredWidth(78);
+		table.getColumnModel().getColumn(3).setPreferredWidth(66);
+		scrollPane.setViewportView(table);
+		DefaultTableModel model = (DefaultTableModel)table.getModel();
+		for(int i = 0; i < RepositorioMedicamento.repMed.size(); i++) {
+			model.addRow(new Object [] {RepositorioMedicamento.repMed.get(i).getId(),RepositorioMedicamento.repMed.get(i).getNome(),RepositorioMedicamento.repMed.get(i).getQuantidade(),RepositorioMedicamento.repMed.get(i).getPreço(),RepositorioMedicamento.repMed.get(i).getPromo()});
+		}
 	}
 }

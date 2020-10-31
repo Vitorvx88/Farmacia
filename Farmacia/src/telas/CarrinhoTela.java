@@ -19,10 +19,7 @@ import dados.Compra;
 import repositorio.AtualizarLista;
 import repositorio.RepositorioAtualizarLista;
 import repositorio.RepositorioCarrinho;
-<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
 import repositorio.RepositorioClientes;
-=======
->>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
 import repositorio.RepositorioCompra;
 import repositorio.RepositorioMedicamento;
 
@@ -43,14 +40,12 @@ public class CarrinhoTela extends JFrame {
 	private Carrinho car = new Carrinho();
 	private JTextField textQuant;
 
-<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
 	private double total =0;
-=======
-	private double total = 0;
->>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
 	private String a ="";
 	private JTable table;
 	private int test=0;
+	private String coletor="";
+	private double totalNota=0;
 	
 	
 	/**
@@ -77,7 +72,7 @@ public class CarrinhoTela extends JFrame {
 		
 		setTitle("MyPharma");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 507, 312);
+		setBounds(100, 100, 556, 312);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -91,7 +86,7 @@ public class CarrinhoTela extends JFrame {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 471, 189);
+		scrollPane.setBounds(10, 11, 520, 189);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -126,18 +121,14 @@ public class CarrinhoTela extends JFrame {
 		for(int i = 0; i < RepositorioCarrinho.car.size(); i++) {
 			DefaultTableModel model = (DefaultTableModel)table.getModel();
 			model.addRow(new Object [] {(RepositorioCarrinho.car.get(i).getID()),(RepositorioCarrinho.car.get(i).getNome()),
-<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
-			RepositorioCarrinho.car.get(i).getQuantidade(),RepositorioCarrinho.car.get(i).getPreco(),(RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade()-car.getValor()),RepositorioCarrinho.car.get(i).getPromo()});
-			scrollPane.setColumnHeaderView(table);
-			total+=((RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade()));
-			car.setDescont(total);
-			total+=-car.getValor();
-=======
 			RepositorioCarrinho.car.get(i).getQuantidade(),RepositorioCarrinho.car.get(i).getPreco(),(RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade()),RepositorioCarrinho.car.get(i).getPromo()});
 			scrollPane.setColumnHeaderView(table);
-			total+=(RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade());
->>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
+			
+			total+=((RepositorioCarrinho.car.get(i).getPreco()*RepositorioCarrinho.car.get(i).getQuantidade()));
+			car.setDescont(total);
+			totalNota=total;
 			}
+			total+= -car.getValor();
 		scrollPane.setViewportView(table);
 		
 		a = RepositorioCarrinho.format(total);	///Label do total!
@@ -167,12 +158,14 @@ public class CarrinhoTela extends JFrame {
 		JButton btnComprar = new JButton("Comprar");
 		btnComprar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				for(int i=0; i< RepositorioCarrinho.car.size();i++) {
+						coletor = coletor + "\n"+RepositorioCarrinho.car.get(i).getQuantidade()+"    "+ RepositorioCarrinho.format(RepositorioCarrinho.car.get(i).getPreco())+"    "+RepositorioCarrinho.car.get(i).getNome();		
+				}
+				
 				for(int i = 0; i<RepositorioCarrinho.car.size(); i++) {//Passando a lista carrinho para um lista de compra
-<<<<<<< HEAD:Farmacia/src/telas/CarrinhoTela.java
 					Compra m1 = new Compra(RepositorioCompra.compr.size()-1,RepositorioCarrinho.car.get(i).getNome(),RepositorioCarrinho.car.get(i).getQuantidade(),(RepositorioCarrinho.car.get(i).getQuantidade()*RepositorioCarrinho.car.get(i).getPreco()),data,horas,RepositorioCarrinho.car.get(i).getPreco());
-=======
-					Compra m1 = new Compra(RepositorioCompra.compr.size()-1,RepositorioCarrinho.car.get(i).getNome(),RepositorioCarrinho.car.get(i).getQuantidade(),(RepositorioCarrinho.car.get(i).getQuantidade()*RepositorioCarrinho.car.get(i).getPreco()),data,horas);
->>>>>>> f77c50d2a7c15d5a913271f457fb6c0a614d6c5e:Farmacia/src/Tela/CarrinhoTela.java
 					RepositorioCompra.addCompra(m1);
 				}//fim copia
 				
@@ -180,29 +173,25 @@ public class CarrinhoTela extends JFrame {
 					RepositorioCarrinho.car.get(i).setQuantidade(0);	
 				}
 				
-				String Nomes=""; String quant=""; int Quantidades=0; String QuantidadesNome =""; double Preccos=0; String pre="";
+				String Nomes=""; String QuantidadesNome ="";
 				
-				for(int i =0; i< RepositorioCarrinho.car.size();i++) {
-					Nomes = Nomes + "|"+ RepositorioCarrinho.car.get(i).getNome();
-					QuantidadesNome = QuantidadesNome + "|" +RepositorioCompra.compr.get(i).getQuantidade();
-					Quantidades = Quantidades  + RepositorioCompra.compr.get(i).getQuantidade();
-					quant = quant +"|"+ RepositorioCompra.compr.get(i).getQuantidade();
-					Preccos = Preccos  +  (RepositorioCarrinho.car.get(i).getPreco() * Quantidades);
-					pre = pre +"|"+ RepositorioCarrinho.format(RepositorioCarrinho.car.get(i).getPreco());
-					
-				
-				}
 				String Preccos2 = RepositorioCarrinho.format(total);
-				
+				String totalNotaST = RepositorioCarrinho.format(totalNota);
+				String desconto = RepositorioCarrinho.format(car.getValor());
+
 				RepositorioCarrinho.car.removeAll(RepositorioCarrinho.car);//limpando o carrinho!
 				String arq = "C:\\Users\\Vitor_2\\Desktop\\NotaFiscal.txt";
 				String textoR = ManipuladorArquivo.leitor(arq);
 					if(textoR.isEmpty()) {
-						String Inf =("NOME       : " + Nomes +"|\n"+
-								"PREÇO      : " + pre+"|\n"+
-								"QUANTIDADES: "+quant 
-								+ "\n" + "TOTAL      : " +Preccos2 +"\n" + "DATA       : " +
-								data+ "\n" + "HORAS      : "+horas);
+						String Inf =("-------------------------\n"
+								     +"     Nota Fiscal\n"+
+								"-------------------------\n"+
+								 "QT   Preco   Descricao"+
+								 coletor
+								+ "\n-------------------------\n" + "Valor Bruto      : " +totalNotaST +"\n"+
+								"Desconto         : "+desconto+"\n"+
+								"Valor Total      : "+ Preccos2 +"\nDATA:  " +
+								data+ "\n" + "HORAS: "+horas+"\n");
 						ManipuladorArquivo.Write(arq, Inf);
 					}
 					else {
@@ -240,7 +229,7 @@ public class CarrinhoTela extends JFrame {
 				dispose();
 		}
 		});
-		btnComprar.setBounds(372, 239, 98, 23);
+		btnComprar.setBounds(432, 239, 98, 23);
 		contentPane.add(btnComprar);
 		
 		JButton btnRemover = new JButton("Remover");
@@ -335,7 +324,7 @@ public class CarrinhoTela extends JFrame {
 			
 			}
 		});
-		btnRemover.setBounds(273, 239, 89, 23);
+		btnRemover.setBounds(435, 210, 95, 23);
 		contentPane.add(btnRemover);
 		
 		JLabel lblQuant = new JLabel("Quant.");
@@ -351,7 +340,6 @@ public class CarrinhoTela extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				String cpf = textCPF.getText();
 				if(RepositorioClientes.buscar(cpf)) {
-					JOptionPane.showMessageDialog(null, car.getDescont());
 					//Carrinho.desconto();
 					car.setValor(car.getDescont()*0.15);
 					JOptionPane.showMessageDialog(null, "Desconto aplicado!");
@@ -365,11 +353,25 @@ public class CarrinhoTela extends JFrame {
 					JOptionPane.showMessageDialog(null, "CPF invalido!");
 			}
 		});
-		btnNewButton.setBounds(218, 239, 45, 23);
+		btnNewButton.setBounds(218, 239, 75, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("CPF");
 		lblNewLabel_1.setBounds(117, 217, 46, 14);
 		contentPane.add(lblNewLabel_1);
+		
+		JButton btnNewButton_1 = new JButton("Limpar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				car.setValor(0);
+				CarrinhoTela obj3 = new CarrinhoTela();
+				obj3.setVisible(true);
+				obj3.setResizable(false);
+				obj3.setLocationRelativeTo(null);
+				dispose();
+			}
+		});
+		btnNewButton_1.setBounds(218, 210, 75, 23);
+		contentPane.add(btnNewButton_1);
 	}
 }

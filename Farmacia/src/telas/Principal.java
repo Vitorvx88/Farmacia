@@ -177,6 +177,7 @@ public class Principal extends JFrame {
 		JButton btnNewButton_7 = new JButton("Adicionar Produto");
 		btnNewButton_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				AdicionarProduto obj = new AdicionarProduto();
 				obj.setVisible(true);
 				obj.setLocationRelativeTo(null);

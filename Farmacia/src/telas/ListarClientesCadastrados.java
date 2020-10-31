@@ -43,14 +43,14 @@ public class ListarClientesCadastrados extends JFrame {
 	 */
 	public ListarClientesCadastrados() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 527, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 414, 182);
+		scrollPane.setBounds(10, 11, 491, 182);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
