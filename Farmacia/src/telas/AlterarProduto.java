@@ -119,16 +119,11 @@ public class AlterarProduto extends JFrame {
 				produto.toUpperCase();
 				String verificarNull="";
 				
-				
 				if(verificarNull.equals(produto)) {
 					aux=1;
 				}
 				
-				if(RepositorioUsuario.soConterLetras(produto)) {
-					aux=1;	
-				}
-				
-				if(Quant >0 && Preç>0 && aux ==0) {
+				if(Quant >0 && Preç>0 && aux==0) {
 					if(RepositorioMedicamento.repMed.get(index).getPromo()!="") {
 						RepositorioMedicamento.repMed.get(index).setNome(textProduto.getText().toUpperCase());
 						RepositorioMedicamento.repMed.get(index).setQuantidade(Quant);

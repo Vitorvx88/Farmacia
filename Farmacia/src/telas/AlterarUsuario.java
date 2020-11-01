@@ -108,7 +108,7 @@ public class AlterarUsuario extends JFrame {
 											if(textSenha.getText().equals(auxNull)) {
 												
 												
-												RepositorioUsuario.nomes.get(index).setNome(nome);
+												RepositorioUsuario.nomes.get(index).setNome(nome.toUpperCase());
 												RepositorioUsuario.nomes.get(index).setCpf(CPF);
 												RepositorioUsuario.nomes.get(index).setIdade(aux);
 												RepositorioUsuario.nomes.remove(RepositorioUsuario.nomes.size()-1);
@@ -123,7 +123,7 @@ public class AlterarUsuario extends JFrame {
 											else {
 												if(RepositorioUsuario.TemMaisQueOitoDigitos(textSenha.getText())==true) {
 													
-													RepositorioUsuario.nomes.get(index).setNome(nome);
+													RepositorioUsuario.nomes.get(index).setNome(nome.toUpperCase());
 													RepositorioUsuario.nomes.get(index).setCpf(CPF);
 													RepositorioUsuario.nomes.get(index).setIdade(aux);
 													RepositorioUsuario.nomes.get(index).setSenha(textSenha.getText());
